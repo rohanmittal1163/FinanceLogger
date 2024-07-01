@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Finance logger TS</title>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="https://static.vecteezy.com/system/resources/thumbnails/020/716/209/small/flat-icon-bank-bank-icon-where-to-keep-money-illustration-of-saving-in-the-bank-free-png.png"
+		/>
+	</head>
+	<style>
+		::-webkit-scrollbar {
+			width: 6px;
+		}
+		::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		}
+		::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			background: #94a3b8;
+		}
+	</style>
+	<body
+		class="w-screen flex items-center justify-center md:h-screen bg-slate-800 font-serif overflow-x-hidden"
+	>
+		<div class="flex items-center flex-col md:flex-row justify-center gap-4">
+			<div
+				class="bg-white relative rounded-md h-auto p-5 w-64 shadow-xl flex flex-col gap-4 before:content-[''] before:rounded-md before:left-0 before:absolute before:w-full before:h-1.5 before:bg-green-400 before:bottom-0"
+			>
+				<div class="flex">
+					<p class="text-slate-800 text-2xl font-semibold">Income</p>
+				</div>
+				<div>
+					<p class="text-slate-800 text-xl after:content-['$']" id="income">
+						0
+					</p>
+				</div>
+				<div>
+					<canvas id="myChart1"></canvas>
+				</div>
+			</div>
+			<div class="bg-white flex flex-col gap-6 rounded-md p-5 transition">
+				<p class="text-slate-800 text-2xl font-semibold">Expense Tracker</p>
+				<div
+					class="flex items-center text-slate-800 text-xl font-normal justify-center"
+				>
+					<p class="">Total Balance:</p>
+					<p class="after:content-['$']" id="totalBal">0</p>
+				</div>
+				<form
+					autocomplete
+					class="grid grid-rows-4 grid-cols-1 sm:grid-rows-3 sm:grid-cols-2 gap-6"
+					id="form"
+				>
+					<select
+						class="border-0 p-2 w-full outline-none border-b-2 border-b-solid border-slate-400"
+						id="category"
+					>
+						<option value="income" selected>Income</option>
+						<option value="expense">Expense</option>
+					</select>
+					<input
+						class="border-0 p-2 w-full outline-none border-b-2 border-b-solid border-slate-400"
+						type="text"
+						placeholder="Add your statement"
+						autofocus
+						required
+						id="statement"
+					/>
+					<input
+						class="border-0 p-2 w-full outline-none border-b-2 border-b-solid border-slate-400"
+						type="number"
+						placeholder="Amount"
+						required
+						id="amount"
+					/>
+					<input
+						class="border-0 p-2 w-full outline-none border-b-2 border-b-solid border-slate-400"
+						type="date"
+						placeholder="choose your date"
+						required
+						id="date"
+					/>
+					<input
+						type="submit"
+						class="border-2 border-purple-300 sm:col-span-2 border-solid rounded-md w-full text-sm p-2 hover:cursor-pointer hover:bg-purple-500 hover:text-white transition-all"
+						value="CREATE"
+					/>
+				</form>
+				<div
+					class="flex flex-col gap-4 overflow-y-scroll max-h-32"
+					id="transaction"
+				></div>
+			</div>
+			<div
+				class="bg-white relative rounded-md h-auto p-5 w-64 shadow-xl flex flex-col gap-4 before:content-[''] before:rounded-md before:left-0 before:absolute before:w-full before:h-1.5 before:bg-red-400 before:bottom-0"
+			>
+				<div class="flex">
+					<p class="text-slate-800 text-2xl font-semibold">Expense</p>
+				</div>
+				<div>
+					<p class="text-slate-800 text-xl after:content-['$']" id="expense">
+						0
+					</p>
+				</div>
+				<div>
+					<canvas id="myChart2"></canvas>
+				</div>
+			</div>
+		</div>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="dist/script.js"></script>
+	</body>
+</html>
